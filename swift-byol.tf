@@ -59,7 +59,7 @@ resource "ibm_is_security_group_rule" "outbound_all" {
 }
 
 resource "ibm_is_image" "custom_image" {
-  name             = "${var.instance_name}-cent-os-7"
+  name             = "${var.instance_name}-${random_string.random_str.result}"
   href             = var.image_url
   operating_system = "centos-7-amd64"
   resource_group   = data.ibm_is_subnet.subnet.resource_group
@@ -90,7 +90,7 @@ resource "ibm_is_instance" "vsi" {
 
 resource "ibm_is_floating_ip" "fip" {
   count          = var.attach_floating_ip ? 1 : 0
-  name           = "${var.instance_name}-fip"
+  name           = "${var.instance_name}-${random_string.random_str.result}"
   target         = ibm_is_instance.vsi.primary_network_interface[0].id
   resource_group = data.ibm_is_subnet.subnet.resource_group
 }
