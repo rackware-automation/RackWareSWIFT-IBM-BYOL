@@ -8,6 +8,14 @@ terraform {
   }
 }
 
+resource "random_string" "random_str" {
+  length  = 4
+  special = false
+  upper   = false
+  lower   = true
+  number  = false
+}
+
 data "ibm_is_subnet" "subnet" {
   name = var.subnet_name
 }
@@ -17,7 +25,7 @@ data "ibm_is_ssh_key" "ssh_key_id" {
 }
 
 resource "ibm_is_security_group" "sg" {
-  name           = var.instance_name
+  name           = "${var.instance_name}-${random_string.random_str.result}"
   vpc            = data.ibm_is_subnet.subnet.vpc
   resource_group = data.ibm_is_subnet.subnet.resource_group
 }
