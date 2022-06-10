@@ -58,17 +58,6 @@ resource "ibm_is_security_group_rule" "outbound_all" {
   remote    = "0.0.0.0/0"
 }
 
-resource "ibm_is_image" "custom_image" {
-  name             = "${var.instance_name}-${random_string.random_str.result}"
-  href             = var.image_url
-  operating_system = "centos-7-amd64"
-  resource_group   = data.ibm_is_subnet.subnet.resource_group
-  timeouts {
-    create = "90m"
-    delete = "90m"
-  }
-}
-
 resource "ibm_is_instance" "vsi" {
   depends_on = [
     ibm_is_security_group_rule.inbound_tcp_port_22, 
@@ -76,7 +65,7 @@ resource "ibm_is_instance" "vsi" {
     ibm_is_security_group_rule.outbound_all
   ]
   name           = "${var.instance_name}"
-  image          = ibm_is_image.custom_image.id
+  image          = local.image_map[var.region]
   profile        = var.profile
   primary_network_interface {
     subnet          = data.ibm_is_subnet.subnet.id
