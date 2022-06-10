@@ -13,7 +13,7 @@ resource "random_string" "random_str" {
   special = false
   upper   = false
   lower   = true
-  number  = false
+  numeric  = false
 }
 
 data "ibm_is_subnet" "subnet" {
@@ -64,7 +64,7 @@ resource "ibm_is_instance" "vsi" {
     ibm_is_security_group_rule.inbound_tcp_port_443, 
     ibm_is_security_group_rule.outbound_all
   ]
-  name           = "${var.instance_name}"
+  name           = var.instance_name
   image          = local.image_map[var.region]
   profile        = var.profile
   primary_network_interface {
