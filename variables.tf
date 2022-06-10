@@ -9,13 +9,13 @@ variable "image_url" {
 
 variable "region" {
   description = "Cloud region where all resources will be deployed."
-  default = "us-south"
+  default     = "us-south"
   type        = string
 }
 
 variable "ssh_key_name" {
-  description = "The name of the [SSH key](https://cloud.ibm.com/vpc-ext/compute/sshKeys)."
-  default = ""
+  description = "The name of the [SSH key](https://cloud.ibm.com/vpc-ext/compute/sshKeys) from the selected region."
+  default     = ""
   type        = string
 }
 
@@ -25,8 +25,8 @@ variable "profile" {
 }
 
 variable "subnet_name" {
-  description = "The name of [subnet](https://cloud.ibm.com/vpc-ext/network/subnets)."
-  default = ""
+  description = "The name of [subnet](https://cloud.ibm.com/vpc-ext/network/subnets) from the selected region."
+  default     = ""
   type        = string
 }
 
@@ -37,6 +37,6 @@ variable "attach_floating_ip" {
 }
 variable "instance_name" {
   description = "Host name of the SWIFT virtual server instance"
-  default = "swift01"
+  default     = "swift01"
   type        = string
 }

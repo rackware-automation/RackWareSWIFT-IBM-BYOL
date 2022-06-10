@@ -13,7 +13,7 @@ resource "random_string" "random_str" {
   special = false
   upper   = false
   lower   = true
-  numeric  = false
+  numeric = false
 }
 
 data "ibm_is_subnet" "subnet" {
@@ -60,19 +60,19 @@ resource "ibm_is_security_group_rule" "outbound_all" {
 
 resource "ibm_is_instance" "vsi" {
   depends_on = [
-    ibm_is_security_group_rule.inbound_tcp_port_22, 
-    ibm_is_security_group_rule.inbound_tcp_port_443, 
+    ibm_is_security_group_rule.inbound_tcp_port_22,
+    ibm_is_security_group_rule.inbound_tcp_port_443,
     ibm_is_security_group_rule.outbound_all
   ]
-  name           = var.instance_name
-  image          = local.image_map[var.region]
-  profile        = var.profile
+  name    = var.instance_name
+  image   = local.image_map[var.region]
+  profile = var.profile
   primary_network_interface {
     subnet          = data.ibm_is_subnet.subnet.id
     security_groups = [ibm_is_security_group.sg.id]
   }
-  vpc  = data.ibm_is_subnet.subnet.vpc
-  zone = data.ibm_is_subnet.subnet.zone
+  vpc            = data.ibm_is_subnet.subnet.vpc
+  zone           = data.ibm_is_subnet.subnet.zone
   keys           = [data.ibm_is_ssh_key.ssh_key_id.id]
   resource_group = data.ibm_is_subnet.subnet.resource_group
 }
