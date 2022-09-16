@@ -52,6 +52,8 @@ You can download operations guide from login page,
 ## SWIFT Demo
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DHT3GS7x-xs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+For more demo videos click [here](https://www.youtube.com/watch?v=I_hexpZmAkQ&list=PL_tHCKPX0KRQSRhWNOqhKgxEi36I22H1n)
+
 ## License
 SWIFT is deployed with free tier license which will allow you move two micro-services (with up to 400GB worth of volumes) for free for a month! (IBM Storage charges need to be paid separately)
 To know more about licensing reach out to us at sales@rackwareinc.com 
