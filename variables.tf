@@ -3,7 +3,7 @@
 # }
 
 variable "image_url" {
-  default     = "cos://us-east/swift-marketplace-img/RackWareSWIFT_BYOL_ibm_1.3.11.155.qcow2"
+  default     = "cos://us-east/swift-marketplace-img/RackWareSWIFT_BYOL_ibm_1.3.11.167.qcow2"
   description = "URL for source VSI image used to spin up instance."
 }
 
